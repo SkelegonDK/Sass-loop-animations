@@ -1,0 +1,47 @@
+$prettyBlack: #222222;
+.grid-wrapper {
+    display: flex;
+    margin-right: 10%;
+    margin-left: 10%;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around; 
+    
+    // CARD STYLES
+    .card {
+        width: 200px;
+        height: 200px;
+        margin: 10px;
+        opacity: 0;
+        border-radius: 5px;
+        background-color: $prettyBlack;
+        flex: 1 1 auto;
+        transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+        animation-duration: 0.3s;
+        animation-fill-mode: forwards;
+        animation-name: fadeIn;
+        &:hover {
+            cursor: pointer;
+        }
+    } 
+
+    
+    // ITEM LOOP
+    @for $i from 1 through 12 {
+        .card:nth-child(#{$i}) {
+            animation-delay: 0.2 * $i+s;
+        }
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        transform: translate(-100px, 0px);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0px, 0px);
+        opacity: 1;
+    }
+}
